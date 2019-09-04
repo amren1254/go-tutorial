@@ -1,1 +1,2 @@
 This is a file for about page of git.
+Now this file will serve for go tutorial.
