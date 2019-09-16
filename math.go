@@ -5,7 +5,7 @@ The package main tells that package should compile as an executable program inst
 */
 
 package main
-
+//using the import identifier
 import ("fmt"
 	"math")		//using the math package to perform operation	
 
