@@ -7,7 +7,7 @@ The package main tells that package should compile as an executable program inst
 package main
 
 import ("fmt"
-	"math")
+	"math")		//using the math package to perform operation	
 
 func main(){
 	//the below function is not working.
