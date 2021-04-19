@@ -73,6 +73,9 @@ func main(){
 	router := mux.NewRouter();
 	posts = append(posts, Post{ID: "1", Title: "AwesomePost", Body: "Authentication and Authorization"});
 	router.HandleFunc("/posts", getPosts).Methods("GET");
-	router.HandleFunc("/posts", createPost).Methods("POST")
+	router.HandleFunc("/posts", createPost).Methods("POST");
+	router.HandleFunc("/posts/{id}", getPost).Methods("GET");
+	router.HandleFunc("/posts/{id}", updatePost).Methods("PUT");
+	router.HandleFunc("/posts/{id}", deletePost).Methods("DELETE");
 	http.ListenAndServe(":5000",router);
 }
