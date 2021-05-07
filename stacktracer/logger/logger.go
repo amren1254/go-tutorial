@@ -6,6 +6,9 @@ import (
 	"strings"
 )
 
+/*
+Echo method to print custom error message
+*/
 func Echo(errorMessage string) {
 	pc, FullFilePath, LineNumber, _ := runtime.Caller(1)
 	funcName := runtime.FuncForPC(pc).Name()
