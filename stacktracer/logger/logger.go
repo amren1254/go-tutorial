@@ -2,20 +2,15 @@ package logger
 
 import (
 	"log"
-	"reflect"
 	"runtime"
 	"strings"
 )
 
-func PrintLog(i interface{}, errorMessage string) {
-	PackageName, FileName := GetFunctionName(i)
-	log.Println(FileName, "-->", PackageName, "-->", errorMessage)
-}
-func GetFunctionName(i interface{}) (string, string) {
-	Name := runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
-	File, _ := runtime.FuncForPC(reflect.ValueOf(i).Pointer()).FileLine(10)
-	split := strings.Split(File, "/")
-	length := len(split)
-	FileName := split[length-1]
-	return Name, FileName
+func Echo(errorMessage string) {
+	pc, FullFilePath, LineNumber, _ := runtime.Caller(1)
+	funcName := runtime.FuncForPC(pc).Name()
+	split := strings.Split(FullFilePath, "/")
+	lengthOfFilePath := len(split)
+	FileName := split[lengthOfFilePath-1]
+	log.Println(FileName, ":", funcName, ": Line:", LineNumber, "->", errorMessage)
 }
